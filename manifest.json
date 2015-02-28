@@ -4,9 +4,6 @@
   "name": "Keep Me On Task",
   "description": "This App will keep you on task",
   "version": "1.0",
-  "background": {
-    "scripts": ["tabWatcher.js"]
-  },
   "browser_action": {
     "default_icon": "qrcode.png",
 	"default_title": "Keep Me On Task!"
