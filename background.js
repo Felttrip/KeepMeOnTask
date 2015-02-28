@@ -1,4 +1,3 @@
-var protocols = ["https://", "http://"];
 
 var whiteListedUrls = ["http://news.ycombinator.com"];
 var blackListedUrls = ["facebook.com", "reddit.com"];
@@ -10,8 +9,9 @@ chrome.browserAction.onClicked.addListener(function(){
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+	console.log(changeInfo.url);
 	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){
-		chrome.tabs.update(tabId, {url: whiteListedUrls[0]});
+		chrome.tabs.update(tabId, {url: getRandomWhiteListedUrl()});
 	}
 
 });
@@ -27,6 +27,6 @@ function isBlackListedUrl(url){
 }
 
 function getRandomWhiteListedUrl(){
-	var randomIndex = Math.floor((Math.random() * whiteListedUrls) + 1);
+	var randomIndex = Math.floor((Math.random() * whiteListedUrls.length));
 	return whiteListedUrls[randomIndex];
 }
