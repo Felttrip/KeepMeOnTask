@@ -2,12 +2,6 @@
 $('document').ready(function(){
 	renderList("whitelist");
 	renderList("blacklist");
-	$('.remove').click(function(){
-		siteId = $(event.currentTarget.parentElement).data("id");
-		listType = $(event.currentTarget.parentElement).data("group");
-		$(event.currentTarget.parentElement).remove();
-		removeSite(listType, siteId);
-	});
 	$('#whitelist_add').click(function(){
 		var site = $('#whitelist_input')[0].value;
 		$('#whitelist_input').val('');
@@ -33,9 +27,15 @@ function renderList(listType){
 			for (var i = 0; i < items[listType].length; i++) {
 				$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listType][i]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
 			};
-		}
-
-	})
+		};
+	});
+	$('.remove').click(function(){
+		alert("HEY");
+		siteId = $(event.currentTarget.parentElement).data("id");
+		listType = $(event.currentTarget.parentElement).data("group");
+		$(event.currentTarget.parentElement).remove();
+		removeSite(listType, siteId);
+	});
 }
 
 function addToList(listName,siteName) {
