@@ -1,6 +1,6 @@
 //page gets loaded
 document.addEventListener('DOMContentLoaded', function() {
-    var button = document.getElementById('add');
+    var button = document.getElementById('whitelist_add');
     // onClick's logic below:
     button.addEventListener('click', function() {
 		saveList(["test","tester","testeroni"],"blackListUrl");
