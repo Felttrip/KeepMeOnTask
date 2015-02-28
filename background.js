@@ -5,9 +5,11 @@ var blackListedUrls = ["facebook.com", "reddit.com"];
 
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-	if(isBlackListedUrl(changeInfo.url)){
+	
+	if(changeInfo.url && isBlackListedUrl(changeInfo.url)){
 		chrome.tabs.update(tabId, {url: whiteListedUrls[0]});
 	}
+	
 });
 
 
