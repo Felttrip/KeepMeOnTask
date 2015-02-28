@@ -7,7 +7,6 @@ var enabled = false;
 
 chrome.browserAction.onClicked.addListener(function(){
   enabled = !enabled;
-  alert(enabled);
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
