@@ -1,7 +1,12 @@
 //Globals
-var whiteListedUrls = [];
-var blackListedUrls = [];
+var whiteListedUrls;
+var blackListedUrls;
 var enabled = false;
+
+/*
+ *initalize urls;
+ */
+updateLists();
 
 /* Watch for clicks of the extension icon
  * toggles the state of the app
@@ -37,6 +42,14 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 	}
 });
 
+function updateLists(){
+	chrome.storage.sync.get('blacklist', function(items){
+            blackListedUrls = items['blacklist'];
+	});
+    chrome.storage.sync.get('whitelist', function(items){
+        whiteListedUrls = items['whitelist'];
+	});
+}
 
 function isBlackListedUrl(url){
 	var parsedUrl = url.substring(url.indexOf(".")+1);
