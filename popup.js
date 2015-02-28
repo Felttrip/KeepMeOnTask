@@ -44,3 +44,6 @@ function getCurrentTabUrl(callback) {
   // });
   // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
+chrome.tabs.onCreated.addListener(function(tab) {
+	alert("Opened a tab!")
+};);
