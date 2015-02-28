@@ -8,7 +8,7 @@ var enabled = false;
  */
 chrome.browserAction.onClicked.addListener(function(){
   enabled = !enabled;
-  var currentIcon = enabled ? chrome.browserAction.setIcon({path: "OnTasklogoRed.png"}) : chrome.browserAction.setIcon({path:"OnTasklogoBlack.png"});
+  enabled ? chrome.browserAction.setIcon({path: {19:"OnTasklogoRed.png", 38:"OnTasklogoRed.png"}}) : chrome.browserAction.setIcon({path:{19:"OnTasklogoBlack.png",38:"OnTasklogoBlack.png"}});
 
 });
 

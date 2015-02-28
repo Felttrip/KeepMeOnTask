@@ -2,12 +2,32 @@
 <html>
   <head>
     <title>Keep Me On Task Settings</title>
-	<script src = "options.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="options.css">
+    <script src="jquery-2.1.3.min.js"></script>
+	<script src="options.js"></script>
   </head>
   <body>
-	<div id = "whitelist">Test</div>
-	<div id = "blacklist">Test</div>
-	<button id = "add" type="button">Click Me!</button>
-	Hello!
+	  <div class="container">
+	  	<div id="whitelist">
+			<h5>Whitelist Sites</h5>
+			<ul id="whitelist_list">
+				<li>wtest1</li>
+				<li>wtest2</li>
+			</ul>
+			<input id="whitelist_input" type="text" placeholder="Whitelist site" />
+			<button id="whitelist_add" type="button">Add to whitelist</button>
+		</div>
+
+		<div id="blacklist">
+			<h5>Blacklist Sites</h5>
+			<ul id="blacklist_list">
+				<li>btest1</li>
+				<li>btest2</li>
+			</ul>
+			<input id="blacklist_input" type="text" placeholder="Blacklist site" />
+			<button id="blacklist_add" type="button">Add to blacklist</button>
+		</div>
+	  </div>
   </body>
 </html>
