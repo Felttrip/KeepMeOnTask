@@ -12,7 +12,7 @@ $('document').ready(function(){
 		//chrome.storage.sync.clear();
 		var site = $('#whitelist_input')[0].value;
 		$('#whitelist_list').append("<li>"+ site + "</li>");
-		addToList("whiteListedUrls", site);
+		addToList("whitelist", site);
 	})
 
 })

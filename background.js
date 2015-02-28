@@ -16,7 +16,6 @@ chrome.browserAction.onClicked.addListener(function(){
  * toggles the state of the app
  */
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-	console.log(changeInfo.url);
 	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){
 		chrome.tabs.update(tabId, {url: getRandomWhiteListedUrl()});
 	}
@@ -29,10 +28,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 	for (key in changes) {
 		var storageChange = changes[key];
-		if(key=='blackListedUrls'){
+		if(key=='blacklist'){
 			blackListedUrls = storageChange.newValue;
 		}
-		if(key=='whiteListedUrls'){
+		if(key=='whitelist'){
 			whiteListedUrls = storageChange.newValue;
 		}
 	}
