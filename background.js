@@ -63,5 +63,5 @@ function isBlackListedUrl(url){
 
 function getRandomWhiteListedUrl(){
 	var randomIndex = Math.floor((Math.random() * whiteListedUrls.length));
-	return whiteListedUrls[randomIndex];
+	return "http://"+whiteListedUrls[randomIndex];
 }
