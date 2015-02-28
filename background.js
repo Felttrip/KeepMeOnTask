@@ -17,8 +17,8 @@ chrome.browserAction.onClicked.addListener(function(){
 
 });
 
-/* Watch for clicks of the extension icon
- * toggles the state of the app
+/* Redirects if turned on
+ * 
  */
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){

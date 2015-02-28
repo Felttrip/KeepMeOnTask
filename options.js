@@ -11,26 +11,32 @@ $('document').ready(function(){
 
 	});
 	$('#whitelist_add').click(function(){
-		//chrome.storage.sync.clear();
 		var site = $('#whitelist_input')[0].value;
 		addToList("whitelist", site);
 		$('#whitelist_list').append("<li data-id='' data-group='whitelist'>"+site+" <span class='remove glyphicon glyphicon-remove'></span></li>");
+	})
+	$('#blacklist_add').click(function(){
+		var site = $('#blacklist_input')[0].value;
+		addToList("blacklist", site);
+		$('#blacklist_list').append("<li data-id='' data-group='blacklist'>"+site+" <span class='remove glyphicon glyphicon-remove'></span></li>");
 	})
 
 })
 
 function getList(listType){
 	chrome.storage.sync.get(listType, function(items){
-		for (var i = 0; i < items[listType].length; i++) {
-			$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listType][i]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
-		};
+		if(items[listType]){
+			for (var i = 0; i < items[listType].length; i++) {
+				$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listType][i]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
+			};
+		}
 	})
 }
 
 function addToList(listName,siteName) {
 	chrome.storage.sync.get(listName, function(items){
 		var sites = [];
-		if(items[listName].constructor === Array){
+		if(items[listName] && items[listName].constructor === Array){
 			sites = items[listName];
 		}
 		sites.push(siteName);
