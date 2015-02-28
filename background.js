@@ -1,6 +1,6 @@
 //Globals
-var whiteListedUrls = ["http://news.ycombinator.com"];
-var blackListedUrls = ["facebook.com", "reddit.com"];
+var whiteListedUrls = [];
+var blackListedUrls = [];
 var enabled = false;
 
 /* Watch for clicks of the extension icon
