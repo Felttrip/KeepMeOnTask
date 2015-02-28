@@ -30,15 +30,12 @@ function getList(listType){
 function addToList(listName,siteName) {
 	chrome.storage.sync.get(listName, function(items){
 		var sites = [];
-		console.log(typeof(items[listName]));
-		if(typeof(items[listName]) === Array){
+		if(items[listName].constructor === Array){
 			sites = items[listName];
 		}
-		console.log("Dope");
 		sites.push(siteName);
 	 	var obj = {};
 	 	obj[listName] = sites;
-	 	console.log(msg)
 		chrome.storage.sync.set(obj, function() {
 		  console.log('Settings saved');
 		});
