@@ -32,16 +32,3 @@ function getRandomWhiteListedUrl(){
 	var randomIndex = Math.floor((Math.random() * whiteListedUrls.length));
 	return whiteListedUrls[randomIndex];
 }
-
-
-function saveList(jsonArray,listType) {
-	// Check that there's some code there.
-	if (!jsonArray) {
-	  message('Error: No value specified');
-	  return;
-	}
-	chrome.storage.sync.set({listType: jsonArray}, function() {
-	  // Notify that we saved.
-	  message('Settings saved');
-	});
-}
