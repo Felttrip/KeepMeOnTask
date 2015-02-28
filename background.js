@@ -1,21 +1,41 @@
-
+//Globals
 var whiteListedUrls = ["http://news.ycombinator.com"];
 var blackListedUrls = ["facebook.com", "reddit.com"];
-
 var enabled = false;
 
+/* Watch for clicks of the extension icon
+ * toggles the state of the app
+ */
 chrome.browserAction.onClicked.addListener(function(){
   enabled = !enabled;
   var currentIcon = enabled ? chrome.browserAction.setIcon({path: "OnTasklogoRed.png"}) : chrome.browserAction.setIcon({path:"OnTasklogoBlack.png"});
 
 });
 
+/* Watch for clicks of the extension icon
+ * toggles the state of the app
+ */
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 	console.log(changeInfo.url);
 	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){
 		chrome.tabs.update(tabId, {url: getRandomWhiteListedUrl()});
 	}
 
+});
+
+/* Listen for changes to the storage
+ * if its changed update the global
+ */
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+	for (key in changes) {
+		var storageChange = changes[key];
+		if(key=='blackListedUrls'){
+			blackListedUrls = storageChange.newValue;
+		}
+		if(key=='whiteListedUrls'){
+			whiteListedUrls = storageChange.newValue;
+		}
+	}
 });
 
 
