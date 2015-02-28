@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var button = document.getElementById('add');
     // onClick's logic below:
-    link.addEventListener('click', function() {
+    button.addEventListener('click', function() {
 		saveList(["test","tester","testeroni"],"blackListUrl");
     });
 });

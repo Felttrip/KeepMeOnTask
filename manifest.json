@@ -6,7 +6,7 @@
   "version": "1.0",
   "browser_action": {
     "default_icon": "OnTaskLogoBlack.png",
-	"default_title": "Keep Me On Task!"
+	  "default_title": "Keep Me On Task!"
   },
   "background":{
     "persistent":true,
