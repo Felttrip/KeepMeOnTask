@@ -6,6 +6,8 @@ var enabled = false;
 
 chrome.browserAction.onClicked.addListener(function(){
   enabled = !enabled;
+  var currentIcon = enabled ? chrome.browserAction.setIcon({path: "OnTasklogoRed.png"}) : chrome.browserAction.setIcon({path:"OnTasklogoBlack.png"});
+
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
