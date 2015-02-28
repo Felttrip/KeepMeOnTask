@@ -5,8 +5,7 @@ var blackListedUrls = ["facebook.com", "reddit.com"];
 var enabled = false;
 
 chrome.browserAction.onClicked.addListener(function(){
-	enabled = !enabled;
-	alert(enabled);
+  enabled = !enabled;
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
