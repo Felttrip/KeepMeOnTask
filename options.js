@@ -37,30 +37,30 @@ function renderList(listType){
 	});
 }
 
-function addToList(listName,siteName) {
-	chrome.storage.sync.get(listName, function(items){
+function addToList(listType,siteName) {
+	chrome.storage.sync.get(listType, function(items){
 		var sites = [];
-		if(items[listName] && items[listName].constructor === Array){
-			sites = items[listName];
+		if(items[listType] && items[listType].constructor === Array){
+			sites = items[listType];
 		}
 		sites.push(siteName);
 	 	var obj = {};
-	 	obj[listName] = sites;
+	 	obj[listType] = sites;
 		chrome.storage.sync.set(obj, function() {
-		  renderList(listName);
+		  renderList(listType);
 		  console.log('Settings saved');
 		});
 	});
 }
 
 function removeSite(listType, siteId){
-	chrome.storage.sync.get(listName, function(items){
-		sites = items[listName];
+	chrome.storage.sync.get(listType, function(items){
+		sites = items[listType];
 		sites.splice(siteId,1);
 	 	var obj = {};
-	 	obj[listName] = sites;
+	 	obj[listType] = sites;
 		chrome.storage.sync.set(obj, function() {
-		  renderList(listName);
+		  renderList(listType);
 		  console.log('Settings saved');
 		});
 	});
