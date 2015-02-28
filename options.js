@@ -8,9 +8,17 @@
 // });
 
 $('document').ready(function(){
+	$('.remove').click(function(event){
+		siteId = $(event.currentTarget.parentElement).data("id");
+		siteType = $(event.currentTarget.parentElement).data("group");
+		removeSite(siteType, siteId);
+		$(event.currentTarget.parentElement).remove();
+
+		
+	});
 	$('#whitelist_add').click(function(){
 		$('#whitelist_list').append("<li>"+ $('#whitelist_input')[0].value + "</li>");
-	})
+	});
 })
 
 function saveList(jsonArray,listType) {
@@ -23,4 +31,8 @@ function saveList(jsonArray,listType) {
 	  // Notify that we saved.
 	  $('blacklist_list').append(jsonArray);
 	});
+}
+
+function removeSite(listType, siteId){
+	
 }

@@ -11,9 +11,9 @@
 	  <div class="container">
 	  	<div id="whitelist">
 			<h5>Whitelist Sites</h5>
-			<ul id="whitelist_list">
-				<li>wtest1</li>
-				<li>wtest2</li>
+			<ul id="whitelist_list" class="well">
+				<li data-id="1" data-group="whitelist">wtest1 <span class="remove glyphicon glyphicon-remove"></span></li>
+				<li data-id="2" data-group="whitelist">wtest2 <span class="remove glyphicon glyphicon-remove"></span></li>
 			</ul>
 			<input id="whitelist_input" type="text" placeholder="Whitelist site" />
 			<button id="whitelist_add" type="button">Add to whitelist</button>
@@ -21,7 +21,7 @@
 		
 		<div id="blacklist">
 			<h5>Blacklist Sites</h5>
-			<ul id="blacklist_list">
+			<ul id="blacklist_list" class="well">
 				<li>btest1</li>
 				<li>btest2</li>
 			</ul>
