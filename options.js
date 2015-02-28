@@ -1,5 +1,7 @@
 //page gets loaded
 $('document').ready(function(){
+	getList("whitelist");
+	getList("blacklist");
 	$('.remove').click(function(event){
 		siteId = $(event.currentTarget.parentElement).data("id");
 		siteType = $(event.currentTarget.parentElement).data("group");
@@ -11,21 +13,32 @@ $('document').ready(function(){
 	$('#whitelist_add').click(function(){
 		//chrome.storage.sync.clear();
 		var site = $('#whitelist_input')[0].value;
+		addToList("whitelist", site);
 		$('#whitelist_list').append("<li>"+ site + "</li>");
-		addToList("whiteListedUrls", site);
 	})
 
 })
 
+function getList(listType){
+	chrome.storage.sync.get(listType, function(items){
+		for (var i = 0; i < items.length; i++) {
+			$('#'+listType+'_list').append("<li data-id="+i+" data-group="+listType+">"+items[listName]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
+		};
+	})
+}
+
 function addToList(listName,siteName) {
 	chrome.storage.sync.get(listName, function(items){
 		var sites = [];
-		if(items[listName].constructor === Array){
+
+		if(typeof(items[listName]) === Array){
 			sites = items[listName];
 		}
+		console.log("Dope");
 		sites.push(siteName);
 	 	var obj = {};
 	 	obj[listName] = sites;
+	 	console.log(obj);
 		chrome.storage.sync.set(obj, function() {
 		  console.log('Settings saved');
 		});
