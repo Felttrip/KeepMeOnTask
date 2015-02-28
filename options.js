@@ -1,11 +1,20 @@
 //page gets loaded
 $('document').ready(function(){
+	$('.remove').click(function(event){
+		siteId = $(event.currentTarget.parentElement).data("id");
+		siteType = $(event.currentTarget.parentElement).data("group");
+		removeSite(siteType, siteId);
+		$(event.currentTarget.parentElement).remove();
+
+
+	});
 	$('#whitelist_add').click(function(){
 		//chrome.storage.sync.clear();
 		var site = $('#whitelist_input')[0].value;
 		$('#whitelist_list').append("<li>"+ site + "</li>");
 		addToList("whiteListedUrls", site);
 	})
+
 })
 
 function addToList(listName,siteName) {
@@ -21,4 +30,8 @@ function addToList(listName,siteName) {
 		  console.log('Settings saved');
 		});
 	});
+}
+
+function removeSite(listType, siteId){
+
 }
