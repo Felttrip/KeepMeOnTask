@@ -1,8 +1,11 @@
-var blackListedUrls = ["http://www.facebook.com", "http://www.reddit.com"];
+var protocols = ["https://", "http://"];
+
+var whiteListedUrls = ["http://news.ycombinator.com"];
+var blackListedUrls = ["www.facebook.com/", "www.reddit.com/"];
 
 
-var newUrl = "http://facebook.com";
-
-chrome.tabs.onCreated.addListener(function(tab){
-	chrome.tabs.update(tab.id, {url: newUrl});	
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+	if(blackListedUrls.indexOf(tab.url) !== -1){
+		chrome.tabs.update(tabId, {url: whiteListedUrls[0]});
+	}
 });
