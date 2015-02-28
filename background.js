@@ -1,7 +1,8 @@
 //Globals
 var whiteListedUrls;
 var blackListedUrls;
-var enabled = false;
+var enabled = true;
+chrome.browserAction.setBadgeText({text:"On"});
 
 /*
  *initalize urls;
@@ -14,6 +15,7 @@ updateLists();
 chrome.browserAction.onClicked.addListener(function(){
   enabled = !enabled;
   enabled ? chrome.browserAction.setIcon({path: {19:"OnTasklogoRed.png", 38:"OnTasklogoRed.png"}}) : chrome.browserAction.setIcon({path:{19:"OnTasklogoBlack.png",38:"OnTasklogoBlack.png"}});
+  enabled ? chrome.browserAction.setBadgeText({text:"On"}) : chrome.browserAction.setBadgeText({text:"Off"});
 
 });
 

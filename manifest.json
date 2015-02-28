@@ -5,7 +5,7 @@
   "description": "This App will keep you on task",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "OnTaskLogoBlack.png",
+    "default_icon": "OnTaskLogoRed.png",
 	  "default_title": "Keep Me On Task!"
   },
   "background":{

@@ -11,12 +11,7 @@ $('document').ready(function(){
 		var site = $('#blacklist_input')[0].value;
 		$('#blacklist_input').val('');
 		addToList("blacklist", site);
-	})
-	$('#blacklist_add').click(function(){
-		var site = $('#blacklist_input')[0].value;
-		addToList("blacklist", site);
-		$('#blacklist_list').append("<li data-id='' data-group='blacklist'>"+site+" <span class='remove glyphicon glyphicon-remove'></span></li>");
-	})
+	});
 
 })
 
