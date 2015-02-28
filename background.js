@@ -3,10 +3,16 @@ var protocols = ["https://", "http://"];
 var whiteListedUrls = ["http://news.ycombinator.com"];
 var blackListedUrls = ["facebook.com", "reddit.com"];
 
+var enabled = false;
+
+chrome.browserAction.onClicked.addListener(function(){
+  enabled = !enabled;
+  alert(enabled);
+});
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 	
-	if(changeInfo.url && isBlackListedUrl(changeInfo.url)){
+	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){
 		chrome.tabs.update(tabId, {url: whiteListedUrls[0]});
 	}
 	
