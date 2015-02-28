@@ -21,8 +21,8 @@ $('document').ready(function(){
 
 function getList(listType){
 	chrome.storage.sync.get(listType, function(items){
-		for (var i = 0; i < items.length; i++) {
-			$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listName]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
+		for (var i = 0; i < items[listType].length; i++) {
+			$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listType][i]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
 		};
 	})
 }
