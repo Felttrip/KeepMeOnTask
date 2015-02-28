@@ -14,7 +14,7 @@ $('document').ready(function(){
 		//chrome.storage.sync.clear();
 		var site = $('#whitelist_input')[0].value;
 		addToList("whitelist", site);
-		$('#whitelist_list').append("<li>"+ site + "</li>");
+		$('#whitelist_list').append("<li data-id='' data-group='whitelist'>"+site+" <span class='remove glyphicon glyphicon-remove'></span></li>");
 	})
 
 })
@@ -22,7 +22,7 @@ $('document').ready(function(){
 function getList(listType){
 	chrome.storage.sync.get(listType, function(items){
 		for (var i = 0; i < items.length; i++) {
-			$('#'+listType+'_list').append("<li data-id="+i+" data-group="+listType+">"+items[listName]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
+			$('#'+listType+'_list').append("<li data-id=\""+i+"\" data-group=\""+listType+"\">"+items[listName]+"<span class='remove glyphicon glyphicon-remove'></span></li>");
 		};
 	})
 }
@@ -30,7 +30,7 @@ function getList(listType){
 function addToList(listName,siteName) {
 	chrome.storage.sync.get(listName, function(items){
 		var sites = [];
-
+		console.log(typeof(items[listName]));
 		if(typeof(items[listName]) === Array){
 			sites = items[listName];
 		}
@@ -38,7 +38,7 @@ function addToList(listName,siteName) {
 		sites.push(siteName);
 	 	var obj = {};
 	 	obj[listName] = sites;
-	 	console.log(obj);
+	 	console.log(msg)
 		chrome.storage.sync.set(obj, function() {
 		  console.log('Settings saved');
 		});
