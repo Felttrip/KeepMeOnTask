@@ -52,6 +52,7 @@ function updateLists(){
 }
 
 function isBlackListedUrl(url){
+  console.log(blackListedUrls);
 	var parsedUrl = url.substring(url.indexOf(".")+1);
 	parsedUrl = parsedUrl.substring(0,parsedUrl.indexOf("/"));
 	if(blackListedUrls.indexOf(parsedUrl) !== -1){
