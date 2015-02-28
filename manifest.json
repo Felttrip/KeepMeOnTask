@@ -12,6 +12,10 @@
     "default_popup": "popup.html",
 	"default_title": "Keep Me On Task!"
   },
+  "background":{
+    "persistent":true,
+    "scripts":["background.js"]
+  },
   "permissions": [
     "activeTab",
     "tabs"
