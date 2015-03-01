@@ -37,22 +37,12 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
             var timeStamp = Date.now();
             var payload = { 'userid': null,
                             'site_visited': null,
-                            'redirected_to': null,
-                            'timestamp': null
+                            'redirected_to': null
                             };
             payload['userid'] = id;
-            payload['site_visited'] = decodeURIComponent(oldUrl);
-            payload['redirected_to'] = decodeURIComponent(newUrl);
-            payload['timestamp'] = timeStamp;
-
-            $.ajax({ type: "POST",
-                     url: "http://104.236.56.129:4567/logs",
-                     data: payload,
-                     dataType: "json",
-                     success: function(data){
-                         console.log(data)
-                     }
-            });
+            payload['site_visited'] = oldUrl;
+            payload['redirected_to'] = newUrl;
+            $.post("http://104.236.56.129:4567/logs", payload);
         })
 
 	}
