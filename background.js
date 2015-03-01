@@ -20,9 +20,10 @@ chrome.browserAction.onClicked.addListener(function(){
 });
 
 /* Redirects if turned on
- * 
+ *
  */
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+    console.log(changeInfo.url);
 	if( enabled && changeInfo.url && isBlackListedUrl(changeInfo.url)){
 		chrome.tabs.update(tabId, {url: getRandomWhiteListedUrl()});
 	}
@@ -54,9 +55,16 @@ function updateLists(){
 }
 
 function isBlackListedUrl(url){
-  console.log(blackListedUrls);
-	var parsedUrl = url.substring(url.indexOf(".")+1);
-	parsedUrl = parsedUrl.substring(0,parsedUrl.indexOf("/"));
+    var parsedUrl = url;
+    if(url.indexOf("://")){
+        parsedUrl = parsedUrl.substring(url.indexOf(":")+3);
+    }
+    if(url.indexOf("www.")!==-1){
+        parsedUrl = parsedUrl.substring(url.indexOf(".")+1);
+    }
+    if(parsedUrl.indexOf("/")!==-1){
+	       parsedUrl = parsedUrl.substring(0,parsedUrl.indexOf("/"));
+    }
 	if(blackListedUrls.indexOf(parsedUrl) !== -1){
 		return true;
 	}
